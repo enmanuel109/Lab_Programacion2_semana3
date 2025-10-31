@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Gabriel
  */
-public class ValidadorSudoku {
+public abstract class ValidadorSudoku {
     
     public static boolean colocacionValida(int[][] tablero, int fila, int columna, int numero) {
         
