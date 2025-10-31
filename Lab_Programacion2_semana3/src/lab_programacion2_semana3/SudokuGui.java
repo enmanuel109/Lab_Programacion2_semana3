@@ -30,8 +30,8 @@ public class SudokuGui extends JFrame {
         setSize(700, 700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(null); // layout absoluto
-
+        setLayout(null); 
+        
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setBounds(20, 20, 630, 630);
@@ -43,18 +43,19 @@ public class SudokuGui extends JFrame {
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                matriz[i][j] = new JTextField("", SwingConstants.CENTER);
-                matriz[i][j].setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 24));
-                matriz[i][j].setHorizontalAlignment(JTextField.CENTER);
-                matriz[i][j].setMargin(new java.awt.Insets(0, 0, 0, 0));
-                matriz[i][j].setOpaque(true);
-                matriz[i][j].setBackground(new Color(180, 200, 255));
 
-                // Borde grueso solo cada 3 celdas (top, left)
+                matriz[i][j] = new JTextField("", SwingConstants.CENTER);
+                matriz[i][j].setBounds(j * size, i * size, size, size);
+                matriz[i][j].setBackground(new Color(180, 200, 255));
+                matriz[i][j].setOpaque(false);
+                matriz[i][j].setHorizontalAlignment(JTextField.CENTER);
+                matriz[i][j].setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 24));
+                matriz[i][j].setMargin(new java.awt.Insets(0, 0, 0, 0));
+                matriz[i][j].setBackground(Color.WHITE);
                 int top = (i % 3 == 0) ? 3 : 1;
                 int left = (j % 3 == 0) ? 3 : 1;
-                int bottom = 1; // igual para todas las filas
-                int right = 1;  // igual para todas las columnas
+                int bottom = (i == 8) ? 3 : 1;
+                int right = (j == 8) ? 3 : 1;
 
                 matriz[i][j].setBorder(new MatteBorder(top, left, bottom, right, Color.BLACK));
                 panel.add(matriz[i][j]);
